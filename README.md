@@ -3,14 +3,14 @@ Broker UI is a dashboard used to manage messages if you have multiple message br
 You can get, move, and delete messages from supported message queues.
 
 Below is an overview of the technologies used
-- Frontend is in <code>broker-mobile-ionic</code> and uses Angular, Ionic, HTML, and CSS.
-- Backend is in <code>broker-service</code> and uses Go.
+* Front-end is in <code>broker-mobile-ionic</code> and uses Angular, Ionic, HTML, and CSS.
+* Back-end is in <code>broker-service</code> and uses Go.
 
 Click [here](https://github.com/CompassionIntl/BrokerUI/tree/master/broker-mobile-ionic#broker-mobile)
-to learn how to setup and run the dashboard.
+to learn how to set up and run the dashboard.
 
 Click [here](https://github.com/CompassionIntl/BrokerUI/tree/master/broker-service#broker-service)
-to learn how to setup and run the service.
+to learn how to set up and run the service.
 
 ***
 
@@ -28,8 +28,8 @@ You can click on a message to view the message headers with ease.
 ***
 
 ### License
-Distributed under the Apache-2.0 License. See LICENSE for more information.
+Distributed under the Apache-2.0 License. See [LICENSE](https://github.com/CompassionIntl/BrokerUI/blob/master/LICENSE) for more information.
 
 ### Authors
-* Christian Cameron - [LinkedIn](https://www.linkedin.com/in/christiancameron02/)
 * Paul Borlin - [LinkedIn](https://www.linkedin.com/in/paulborlin/)
+* Christian Cameron - [LinkedIn](https://www.linkedin.com/in/christiancameron02/)
