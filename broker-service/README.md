@@ -1,6 +1,6 @@
 # Broker Service
 
-Broker Service connects BrokerUI to message queue servers.
+Broker Service connects Broker UI to message queue servers.
 
 You can add as many servers as you need to <code>/adapters</code>.
 Currently, Broker Service only supports ActiveMQ, RabbitMQ, and SQS servers.
@@ -116,13 +116,5 @@ The ActiveMQ adapter supports multiple broker and console URLs.
 In <code>prime-env.sh</code>, add multiple URLs separated by a comma.
 The adapter will try to connect to the URLs in order until one is successful.
 
-Currently, ActiveMQ is the only adapter with test cases. Run <code>activeMQAdapter_test.go</code> to test the adapter.
-
-***
-
-### License
-Distributed under the Apache-2.0 License. See LICENSE for more information.
-
-### Authors
-* Christian Cameron - [LinkedIn](https://www.linkedin.com/in/christiancameron02/) - [GitHub](https://github.com/christiancameron)
-* Paul Borlin - [LinkedIn](https://www.linkedin.com/in/paulborlin/) - [GitHub](https://github.com/borlinp)
+Currently, ActiveMQ is the only adapter with test cases.
+Run <code>activeMQAdapter_test.go</code> to test the adapter.
