@@ -1,0 +1,34 @@
+<h2>Queues for Broker: '{{filter.brokerName}}'</h2>
+<div class="w3-col s4" style="width:100%;padding-bottom:20px;">
+  <label>Broker</label>
+  <ion-select class="w3-border" [(ngModel)]="filter.brokerName" (ngModelChange)="changeBroker()" interface="popover">
+    <ion-select-option *ngFor="let broker of brokers" [value]="broker.Name">{{broker.Name}}</ion-select-option>
+  </ion-select>
+</div>
+<table class="w3-table-all w3-hoverable">
+  <tr class="table-header">
+    <th>Queue Name</th>
+    <th>Number of Messages</th>
+    <!-- <th>Status</th> -->
+    <th></th>
+  </tr>
+  <tr style="background-color: transparent;" [hidden]="isLoading==true">
+    <div class="loader" >
+      <div class="spinner">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </tr>
+  <tr *ngFor="let queue of queues" class="w3-hover-blue">
+    <td class="clickable longColumn" (click)="filterQueue(queue)">{{queue.Name}}</td>
+    <td>{{queue.Info.Size}}</td>
+    <!-- <td>
+      <img class="w3-round" style="width: 40px;" *ngIf="queue.moldy" src="../assets/images/moldy.png">
+      <img class="w3-round" style="width: 40px;" *ngIf="!queue.moldy" src="../assets/images/notMoldy.png">
+    </td> -->
+    <td class="w3-right-align">
+      <button class="w3-btn w3-border w3-border-red w3-text-red w3-round-large"
+        (click)="purgeQueue(queue.Name)">Purge Queue</button>
+    </td>
+  </tr>
+</table>

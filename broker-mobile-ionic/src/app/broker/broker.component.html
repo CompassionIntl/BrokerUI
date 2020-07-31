@@ -1,0 +1,9 @@
+<h2>Brokers</h2>
+<table class="w3-table-all w3-hoverable">
+  <tr class="table-header">
+    <th>Broker Name</th>
+  </tr>
+  <tr *ngFor="let broker of brokers" class="w3-hover-blue" (click)="filterBroker(broker)">
+    <td class="clickable">{{broker.Name}}</td>
+  </tr>
+</table>

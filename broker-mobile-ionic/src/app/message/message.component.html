@@ -1,0 +1,114 @@
+<h2 style="padding-left:10px;">Messages for Queue: '{{filter.queueName}}'</h2>
+<ion-grid class="flex-container">
+  <ion-row class="flex-top-row">
+    <ion-col class="flex-top-col">
+      <label>Queue [Size]</label>
+      <ion-select class="w3-border" [(ngModel)]="filter.queueName"
+        (ngModelChange)="changeQueue()" interface="popover">
+          <ion-select-option *ngFor="let queue of queues" [value]="queue.Name">
+            {{queue.Name}} [{{queue.Info.Size}}]
+          </ion-select-option>
+      </ion-select>
+    </ion-col>
+    <ion-col class="flex-top-col">
+      <label>Message ID</label>
+      <ion-input class="w3-input" placeholder="ID" [(ngModel)]="filter.messageId"></ion-input>
+    </ion-col>
+    <ion-col class="flex-top-col">
+      <label>Message Body</label>
+      <ion-input class="w3-input" placeholder="Search text" [(ngModel)]="filter.messageBody"></ion-input>
+    </ion-col>
+  </ion-row>
+  <ion-row class="flex-top-row" *ngFor="let row of filterRows; let i = index">
+    <ion-col class="flex-top-col" *ngFor="let col of row; let j = index">
+      <label>{{headerNames[3*i+j]}}</label>
+      <ion-input class="w3-input" placeholder="Enter Text" [(ngModel)]=headerInputs[3*i+j]></ion-input>
+    </ion-col>
+ </ion-row>
+  <ion-row class="flex-top-row">
+    <ion-col class="flex-top-col">
+      <label>From Date</label>
+      <ion-input type="date" class="w3-input" [(ngModel)]="filter.fromDate"></ion-input>
+    </ion-col>
+    <ion-col class="flex-top-col">
+      <label>To Date</label>
+      <ion-input type="date" class="w3-input" [(ngModel)]="filter.toDate"></ion-input>
+    </ion-col>
+  </ion-row>
+  <ion-row class = "flex-top-row">
+    <div class="w3-left">
+      <ion-button class= "message-ion-btn" (click)="filterMessages()" size="small"  fill="outline">
+        Filter
+      </ion-button>
+      <ion-button class= "message-ion-btn" (click)="clearFilters()" size="small" fill="outline">
+        Clear Filter
+      </ion-button>
+    </div>
+  </ion-row>
+</ion-grid>
+<ion-grid class="w3-table-all w3-hoverable">
+    <tr class="table-header" style="max-width:100%!important">
+      <th style="width: 45px;">
+        <ion-checkbox id="checkbox" (click)="checkAll()"></ion-checkbox>
+      </th>
+      <th tappable (click)="sortBy('MessageID')">
+        Message Id
+        <ion-icon name="arrow-down" *ngIf="sortDirection==1 && sortKey=='MessageID'"></ion-icon>
+        <ion-icon name="arrow-up" *ngIf="sortDirection==2 && sortKey=='MessageID'"></ion-icon>
+      </th>
+      <th tappable (click)="sortBy('Timestamp')">
+        Timestamp
+        <ion-icon name="arrow-down" *ngIf="sortDirection==1 && sortKey=='Timestamp'"></ion-icon>
+        <ion-icon name="arrow-up" *ngIf="sortDirection==2 && sortKey=='Timestamp'"></ion-icon>
+      </th>
+      <th tappable (click)="sortBy('Body')">
+        Message Body
+        <ion-icon name="arrow-down" *ngIf="sortDirection==1 && sortKey=='Body'"></ion-icon>
+        <ion-icon name="arrow-up" *ngIf="sortDirection==2 && sortKey=='Body'"></ion-icon>
+      </th>
+    </tr>
+    <tr style="background-color: transparent;" [hidden]="isLoading==true">
+      <div class="loader" >
+        <div class="spinner">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </tr>
+    <tr *ngFor="let message of filteredMessages; let i = index;" class="w3-hover-green">
+      <td class="longColumn">
+        <ion-checkbox [(ngModel)]="message.isChecked" (ngModelChange)="updateCheckedMessages(message)"></ion-checkbox>
+      </td>
+      <td class="clickable longColumn" (click)="presentModal(message)">
+        {{message.MessageID}}
+      </td>
+      <td class="longColumn">
+        {{message.Timestamp | date: 'MM/dd/yyyy HH:mm:ss'}}
+      </td>
+      <td class="longColumn">
+        {{message.Body}}
+      </td>
+    </tr>
+</ion-grid>
+<ion-grid>
+  <ion-row class="flex-top-row" style="height:fit-content;">
+    <ion-col style="width:100%;">
+      <label>Move Messages to:</label>
+      <ion-select class="w3-border" [(ngModel)]="filter.destinationQueueName"
+        (ngModelChange)="changeDestinationQueue()" interfac="popover">
+        <ion-select-option *ngFor="let queue of queueTos" [value]="queue.Name">
+          {{queue.Name}} [{{queue.Info.Size}}]
+        </ion-select-option>
+      </ion-select>
+    </ion-col>
+  </ion-row>
+  <ion-row class = "flex-top-row">
+    <div class="w3-left">
+      <ion-button class= "message-ion-btn" (click)="moveMessages()" size="small" fill="outline">
+        Move
+      </ion-button>
+      <ion-button class= "message-ion-btn" (click)="deleteMessages()" size="small" fill="outline" strong="false">
+        Delete
+      </ion-button>
+    </div>
+  </ion-row>
+</ion-grid>

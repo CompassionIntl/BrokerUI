@@ -1,0 +1,43 @@
+<ion-content>
+  <div class="message-container">
+    <ion-icon src="./assets/icon/close.svg" size="small" class="clickable" (click)="dismiss()"
+      style="float: right; margin-bottom: 20px;"></ion-icon>
+    <div class="message-detail-container">
+      <h2>Message Details</h2>
+      <div>
+        <h4>Body:</h4>
+        <h6><span style="font-weight:normal">{{message.Body}}</span></h6>
+      </div>
+      <ion-grid class="w3-table-all w3-hoverable">
+        <tr class="table-header" style="max-width:100%!important">
+          <th>Header</th>
+          <th>Value</th>
+        </tr>
+        <tr *ngFor="let header of message.Headers | keyvalue">
+          <td class="longColumn">
+            {{header.key}}
+          </td>
+          <td class="longColumn">
+            {{header.value}}
+          </td>
+        </tr>
+      </ion-grid>
+    </div>
+    <div class="icon-container">
+      <div class="w3-left detail-footer">
+        <label class="modalSelectLabel w3-margin">Move Message to:</label>
+        <ion-select class="w3-border"
+          [(ngModel)]="filter.destinationQueueName" (ngModelChange)="changeDestinationQueue()">
+          <ion-select-option *ngFor="let queue of queues" [value]="queue.Name">{{queue.Name}}</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="w3-right detail-footer">
+        <ion-icon src="./assets/icon/move.svg" size="large" class="w3-margin-right w3-right clickable"
+          (click)="moveMessage()"> <!-- message.MessageID should be passed here?? -->
+        </ion-icon>
+        <ion-icon src="./assets/icon/delete.svg" size="large" class="w3-right clickable"
+          (click)="deleteMessage()"></ion-icon> <!-- message.MessageID should be passed here?? -->
+      </div>
+    </div>
+  </div>
+</ion-content>

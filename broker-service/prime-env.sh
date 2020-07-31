@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+export BROKER3_NAME=rabbitmq-local
+export BROKER3_CONSOLE_URL=http://localhost:15672
+export BROKER3_URL=amqp://localhost:5672
+export BROKER3_HOST=test
+export BROKER3_TYPE=rabbitmq
+export BROKER3_USER=guest
+export BROKER3_PASS=guest
+export BROKER1_NAME=amq-local
+export BROKER1_URL=amqp://localhost:5671
+export BROKER1_CONSOLE_URL=http://localhost:8162
+export BROKER1_CONSOLE_USER=admin
+export BROKER1_CONSOLE_PASS=admin
+export BROKER1_TYPE=amq
+export BROKER1_USER=admin
+export BROKER1_PASS=admin

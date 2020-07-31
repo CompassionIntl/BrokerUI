@@ -1,0 +1,7 @@
+{
+  "name": "broker-mobile",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

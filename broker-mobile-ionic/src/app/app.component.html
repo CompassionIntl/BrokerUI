@@ -1,0 +1,72 @@
+<div class="row align-items-center spread" style="background-color: #0054A6; color:white;max-height:10vh + 20px;">
+  <div style="padding:10px;">
+    <img src="./assets/images/sponsor-a-child.png" alt="Compassion Logo" style="height: 5vh;" />
+  </div>
+</div>
+<div class="row justify-content-md-center">
+  <!-- Sidebar -->
+  <!-- <div class="w3-sidebar w3-bar-block w3-white w3-animate-left" style="display:none;z-index:4" id="mySidebar">
+        <button class="w3-bar-item w3-button" (click)="w3_close()">Close</button>
+        <a routerLink="brokers" class="w3-bar-item w3-button" (click)="w3_close()">Brokers</a>
+        <a routerLink="queues" class="w3-bar-item w3-button" (click)="w3_close()">Queues</a>
+        <a routerLink="messages" class="w3-bar-item w3-button" (click)="w3_close()">Messages</a>
+      </div> -->
+  <!-- Overlay -->
+  <!-- <div class="w3-overlay" id="myOverlay" (click)="w3_close()" style="cursor:pointer"></div> -->
+  <div id="bodyContainer">
+    <!-- <button class="w3-button w3-xxlarge" id="hamButton" (click)="w3_open()">&#9776;</button> -->
+    <div class="w3-padding">
+      <div class="w3-display-container" style="min-height:150px;">
+        <div class="w3-row w3-display-middle">
+          <div class="w3-cell">
+            <a routerLink="brokers">
+              <div class="w3-border w3-padding w3-circle w3-card-2 broker-wizard-bubble"
+                [class.w3-grey]="selectedTab === 1" [class.w3-green]="selectedTab > 1">
+                <span>1</span>
+              </div>
+              <p class="w3-hide-small w3-center" style="transform:translateX(-5%);">Brokers</p>
+            </a>
+          </div>
+          <div class="w3-cell broker-dash w3-hide-small" [class.w3-disabled]="!brokerSelected">
+            &#x2015;&#x2015;&#x2015;&#x2015;&#x2015;&nbsp;
+          </div>
+          <div class="w3-cell broker-dash w3-hide-medium w3-hide-large" [class.w3-disabled]="!brokerSelected">
+            &#x2015;&nbsp;
+          </div>
+          <div class="w3-cell" [class.w3-disabled]="!brokerSelected">
+
+            <a [routerLink]= "['brokers', brokerName, 'queues']">
+
+              <div class="w3-border w3-padding w3-circle w3-card-2 broker-wizard-bubble"
+                [class.w3-grey]="selectedTab === 2" [class.w3-green]="selectedTab > 2">
+                <span>2</span>
+              </div>
+              <p class="w3-hide-small w3-center" style="transform:translateX(-5%);">Queues</p>
+            </a>
+          </div>
+          <div class="w3-cell broker-dash w3-hide-small" [class.w3-disabled]="!queueSelected">
+            &#x2015;&#x2015;&#x2015;&#x2015;&#x2015;&nbsp;
+          </div>
+          <div class="w3-cell broker-dash w3-hide-medium w3-hide-large" [class.w3-disabled]="!queueSelected">
+            &#x2015;&nbsp;
+          </div>
+          <div class="w3-cell" [class.w3-disabled]="!queueSelected">
+
+            <a [routerLink]= "['brokers', brokerName, 'queues', queueName, 'messages']">
+
+              <div class="w3-border w3-padding w3-circle w3-card-2 broker-wizard-bubble"
+                [class.w3-grey]="selectedTab === 3" [class.w3-green]="selectedTab > 3">
+                <span>3</span>
+              </div>
+              <p class="w3-hide-small w3-center" style="transform:translateX(-25%);">Messages</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w3-padding">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+<div id="snackbar"></div>

@@ -1,0 +1,61 @@
+
+.message-container {
+    padding: 20px;
+    position: relative;
+    height: 100%;
+    margin-top: constant(safe-area-inset-top);
+    margin-top: env(safe-area-inset-top);
+}
+
+.message-container > div > h5 {
+    font-weight: normal;
+    font-size: small;
+}
+
+.icon-container {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    bottom: 10px;
+    left: 10px;
+    width: 100%;
+    padding-right: 10px;
+
+    margin-bottom: constant(safe-area-inset-bottom);
+    margin-bottom: env(safe-area-inset-bottom);
+}
+
+.modalSelect {
+    bottom: 10px;
+    width: 30%;
+}
+
+.modalSelectLabel {
+    padding-right: 20px;
+}
+
+.message-detail-container {
+  overflow-y: scroll;
+  height: calc(100% - 30px);
+}
+
+.message-detail-container::-webkit-scrollbar {
+  display: none;
+}
+
+.option-select-height {
+  white-space: nowrap; 
+  max-height: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.detail-footer {
+height: fit-content;
+display: flex;
+padding-top: 1rem;
+}
+
+.longColumn {
+  white-space: inherit;
+}
